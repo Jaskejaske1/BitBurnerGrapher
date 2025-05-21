@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bitburner Network Viewer</title>
+  <script src="https://unpkg.com/cytoscape@3.24.0/dist/cytoscape.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #cy {
+      width: 100vw;
+      height: 100vh;
+    }
+    .tooltip {
+      position: absolute;
+      background: #161b22;
+      color: #eee;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 100;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="cy"></div>
+  <div class="tooltip" id="tooltip"></div>
+  <script>
+    async function loadJSON(filename) {
+      const response = await fetch(filename);
+      if (!response.ok) throw new Error(`Failed to load ${filename}`);
+      return response.json();
+    }
+
+    function normalizeMoney(value, min, max) {
+      const m = Math.max(value || 0, 0);
+      const scaled = (m - min) / (max - min);
+      return 10 + scaled * 40;
+    }
+
+    async function render() {
+      const [graphData, serverInfo, hackTargets] = await Promise.all([
+        loadJSON('network-graph.json'),
+        loadJSON('server-info.json'),
+        loadJSON('hack-targets.json')
+      ]);
+
+      const tooltip = document.getElementById('tooltip');
+      const nodes = [];
+      const edges = [];
+
+      const moneyValues = Object.values(serverInfo).map(s => s.maxMoney || 0);
+      const minMoney = Math.min(...moneyValues);
+      const maxMoney = Math.max(...moneyValues);
+
+      const added = new Set();
+
+      for (const [server, neighbors] of Object.entries(graphData)) {
+        if (!added.has(server)) {
+          const info = serverInfo[server] || {};
+          const isHome = server === "home";
+          const isPserv = server.startsWith("pserv-");
+
+          nodes.push({
+            data: {
+              id: server,
+              label: server,
+              root: info.root,
+              maxMoney: info.maxMoney,
+              ram: info.ram,
+              hackLevel: info.hackLevel,
+              growth: info.serverGrowth,
+              security: info.securityLevel,
+              minSecurity: info.minSecurityLevel,
+              isHome,
+              isPserv
+            }
+          });
+
+          added.add(server);
+        }
+
+        for (const neighbor of neighbors) {
+          const edgeId = [server, neighbor].sort().join("_");
+          if (!edges.some(e => e.data.id === edgeId)) {
+            edges.push({ data: { id: edgeId, source: server, target: neighbor } });
+          }
+        }
+      }
+
+      const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: [...nodes, ...edges],
+        style: [
+          {
+            selector: 'node',
+            style: {
+              'label': 'data(label)',
+              'text-valign': 'top',
+              'text-halign': 'center',
+              'text-margin-y': '-10px',
+              'color': '#c9d1d9',
+              'text-outline-color': '#0d1117',
+              'text-outline-width': 2,
+              'font-size': '10px',
+              'background-color': ele => {
+                if (ele.data('isHome')) return '#ffd33d';
+                return ele.data('root') ? '#26a641' : '#d73a49';
+              },
+              'border-color': ele => ele.data('isPserv') ? '#58a6ff' : '#444',
+              'border-width': ele => ele.data('isPserv') ? 3 : 1,
+              'width': ele => normalizeMoney(ele.data('maxMoney'), minMoney, maxMoney),
+              'height': ele => normalizeMoney(ele.data('maxMoney'), minMoney, maxMoney)
+            }
+          },
+          {
+            selector: 'edge',
+            style: {
+              'line-color': '#444',
+              'width': 1
+            }
+          }
+        ],
+        layout: { name: 'cose', animate: true }
+      });
+
+      cy.on('mouseover', 'node', evt => {
+        const d = evt.target.data();
+        tooltip.innerHTML = `
+          <strong>${d.label}</strong><br/>
+          Rooted: ${d.root}<br/>
+          RAM: ${d.ram} GB<br/>
+          Hack Level: ${d.hackLevel}<br/>
+          Max Money: $${(d.maxMoney || 0).toLocaleString()}<br/>
+          Growth: ${d.growth || "N/A"}<br/>
+          Security: ${d.security || "N/A"}<br/>
+          Min Security: ${d.minSecurity || "N/A"}
+        `;
+        tooltip.style.display = 'block';
+      });
+
+      cy.on('mouseout', 'node', () => {
+        tooltip.style.display = 'none';
+      });
+
+      cy.on('mousemove', evt => {
+        if (evt.renderedPosition) {
+          tooltip.style.left = (evt.renderedPosition.x + 15) + 'px';
+          tooltip.style.top = (evt.renderedPosition.y + 15) + 'px';
+        }
+      });
+    }
+
+    render().catch(err => alert("Failed to render: " + err));
+  </script>
+</body>
+</html>
+<!-- This HTML file visualizes a network graph using Cytoscape.js. It loads data from JSON files, normalizes values for display, and sets up tooltips for node information. -->
+<!-- The graph is styled based on node properties, and the layout is animated. -->
+<!-- The tooltip displays server information when hovering over nodes. -->
+<!-- The script handles loading data, rendering the graph, and managing tooltip visibility and positioning. -->

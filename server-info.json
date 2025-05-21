@@ -1,0 +1,1798 @@
+{
+  "home": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 128,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home"
+    ]
+  },
+  "n00dles": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 1750000,
+    "ram": 4,
+    "serverGrowth": 3000,
+    "securityLevel": 2.5499999999999456,
+    "minSecurityLevel": 1,
+    "backdoor": true,
+    "path": [
+      "home",
+      "n00dles"
+    ]
+  },
+  "CSEC": {
+    "root": true,
+    "hackLevel": 52,
+    "maxMoney": 0,
+    "ram": 8,
+    "serverGrowth": 1,
+    "securityLevel": 4.397999999999944,
+    "minSecurityLevel": 1,
+    "backdoor": true,
+    "path": [
+      "home",
+      "n00dles",
+      "CSEC"
+    ]
+  },
+  "foodnstuff": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 50000000,
+    "ram": 16,
+    "serverGrowth": 5,
+    "securityLevel": 7.819999999999994,
+    "minSecurityLevel": 3,
+    "backdoor": true,
+    "path": [
+      "home",
+      "foodnstuff"
+    ]
+  },
+  "sigma-cosmetics": {
+    "root": true,
+    "hackLevel": 5,
+    "maxMoney": 57500000,
+    "ram": 16,
+    "serverGrowth": 10,
+    "securityLevel": 7.859999999999993,
+    "minSecurityLevel": 3,
+    "backdoor": true,
+    "path": [
+      "home",
+      "sigma-cosmetics"
+    ]
+  },
+  "joesguns": {
+    "root": true,
+    "hackLevel": 10,
+    "maxMoney": 62500000,
+    "ram": 16,
+    "serverGrowth": 20,
+    "securityLevel": 5.1679999999999975,
+    "minSecurityLevel": 5,
+    "backdoor": true,
+    "path": [
+      "home",
+      "joesguns"
+    ]
+  },
+  "max-hardware": {
+    "root": true,
+    "hackLevel": 80,
+    "maxMoney": 250000000,
+    "ram": 32,
+    "serverGrowth": 30,
+    "securityLevel": 26.544999999999995,
+    "minSecurityLevel": 5,
+    "backdoor": true,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware"
+    ]
+  },
+  "silver-helix": {
+    "root": true,
+    "hackLevel": 150,
+    "maxMoney": 1125000000,
+    "ram": 64,
+    "serverGrowth": 30,
+    "securityLevel": 25.12799999999999,
+    "minSecurityLevel": 10,
+    "backdoor": true,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix"
+    ]
+  },
+  "the-hub": {
+    "root": true,
+    "hackLevel": 301,
+    "maxMoney": 4371199275,
+    "ram": 64,
+    "serverGrowth": 46,
+    "securityLevel": 35.975,
+    "minSecurityLevel": 13,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "the-hub"
+    ]
+  },
+  "zb-institute": {
+    "root": true,
+    "hackLevel": 757,
+    "maxMoney": 24191900650,
+    "ram": 32,
+    "serverGrowth": 75,
+    "securityLevel": 80,
+    "minSecurityLevel": 27,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "the-hub",
+      "zb-institute"
+    ]
+  },
+  "johnson-ortho": {
+    "root": true,
+    "hackLevel": 260,
+    "maxMoney": 1948392850,
+    "ram": 0,
+    "serverGrowth": 38,
+    "securityLevel": 47,
+    "minSecurityLevel": 16,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho"
+    ]
+  },
+  "rothman-uni": {
+    "root": true,
+    "hackLevel": 407,
+    "maxMoney": 5066353500,
+    "ram": 64,
+    "serverGrowth": 39,
+    "securityLevel": 53,
+    "minSecurityLevel": 18,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni"
+    ]
+  },
+  "lexo-corp": {
+    "root": true,
+    "hackLevel": 739,
+    "maxMoney": 18085187250,
+    "ram": 32,
+    "serverGrowth": 64,
+    "securityLevel": 78,
+    "minSecurityLevel": 26,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp"
+    ]
+  },
+  "global-pharm": {
+    "root": true,
+    "hackLevel": 824,
+    "maxMoney": 42698560325,
+    "ram": 16,
+    "serverGrowth": 82,
+    "securityLevel": 76,
+    "minSecurityLevel": 25,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm"
+    ]
+  },
+  "deltaone": {
+    "root": true,
+    "hackLevel": 855,
+    "maxMoney": 35453291975,
+    "ram": 0,
+    "serverGrowth": 68,
+    "securityLevel": 77,
+    "minSecurityLevel": 26,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone"
+    ]
+  },
+  "defcomm": {
+    "root": true,
+    "hackLevel": 1050,
+    "maxMoney": 20448892200,
+    "ram": 0,
+    "serverGrowth": 65,
+    "securityLevel": 88,
+    "minSecurityLevel": 29,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm"
+    ]
+  },
+  "taiyang-digital": {
+    "root": true,
+    "hackLevel": 917,
+    "maxMoney": 21415297625,
+    "ram": 0,
+    "serverGrowth": 70,
+    "securityLevel": 79,
+    "minSecurityLevel": 26,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm",
+      "taiyang-digital"
+    ]
+  },
+  "run4theh111z": {
+    "root": true,
+    "hackLevel": 546,
+    "maxMoney": 0,
+    "ram": 64,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm",
+      "taiyang-digital",
+      "run4theh111z"
+    ]
+  },
+  "nova-med": {
+    "root": true,
+    "hackLevel": 844,
+    "maxMoney": 31113279100,
+    "ram": 0,
+    "serverGrowth": 71,
+    "securityLevel": 67,
+    "minSecurityLevel": 22,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm",
+      "nova-med"
+    ]
+  },
+  "icarus": {
+    "root": true,
+    "hackLevel": 868,
+    "maxMoney": 24198317775,
+    "ram": 0,
+    "serverGrowth": 88,
+    "securityLevel": 92,
+    "minSecurityLevel": 31,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "icarus"
+    ]
+  },
+  "infocomm": {
+    "root": true,
+    "hackLevel": 926,
+    "maxMoney": 18926376125,
+    "ram": 0,
+    "serverGrowth": 74,
+    "securityLevel": 86,
+    "minSecurityLevel": 29,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "icarus",
+      "infocomm"
+    ]
+  },
+  "univ-energy": {
+    "root": true,
+    "hackLevel": 886,
+    "maxMoney": 27839492600,
+    "ram": 16,
+    "serverGrowth": 81,
+    "securityLevel": 82,
+    "minSecurityLevel": 27,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "univ-energy"
+    ]
+  },
+  "solaris": {
+    "root": true,
+    "hackLevel": 777,
+    "maxMoney": 17752645125,
+    "ram": 16,
+    "serverGrowth": 71,
+    "securityLevel": 71,
+    "minSecurityLevel": 24,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris"
+    ]
+  },
+  "zb-def": {
+    "root": true,
+    "hackLevel": 783,
+    "maxMoney": 27293100225,
+    "ram": 0,
+    "serverGrowth": 71,
+    "securityLevel": 64,
+    "minSecurityLevel": 21,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def"
+    ]
+  },
+  "titan-labs": {
+    "root": true,
+    "hackLevel": 852,
+    "maxMoney": 22286180600,
+    "ram": 64,
+    "serverGrowth": 60,
+    "securityLevel": 75,
+    "minSecurityLevel": 25,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "titan-labs"
+    ]
+  },
+  "microdyne": {
+    "root": true,
+    "hackLevel": 813,
+    "maxMoney": 13538451850,
+    "ram": 32,
+    "serverGrowth": 70,
+    "securityLevel": 72,
+    "minSecurityLevel": 24,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne"
+    ]
+  },
+  "fulcrumtech": {
+    "root": true,
+    "hackLevel": 1234,
+    "maxMoney": 39922521825,
+    "ram": 2048,
+    "serverGrowth": 81,
+    "securityLevel": 83,
+    "minSecurityLevel": 28,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "fulcrumtech"
+    ]
+  },
+  "stormtech": {
+    "root": true,
+    "hackLevel": 1017,
+    "maxMoney": 29993615675,
+    "ram": 0,
+    "serverGrowth": 70,
+    "securityLevel": 87,
+    "minSecurityLevel": 29,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "stormtech"
+    ]
+  },
+  "vitalife": {
+    "root": true,
+    "hackLevel": 789,
+    "maxMoney": 18370101700,
+    "ram": 128,
+    "serverGrowth": 71,
+    "securityLevel": 83,
+    "minSecurityLevel": 28,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "vitalife"
+    ]
+  },
+  ".": {
+    "root": true,
+    "hackLevel": 511,
+    "maxMoney": 0,
+    "ram": 16,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "vitalife",
+      "."
+    ]
+  },
+  "applied-energetics": {
+    "root": true,
+    "hackLevel": 819,
+    "maxMoney": 19680949150,
+    "ram": 0,
+    "serverGrowth": 74,
+    "securityLevel": 78,
+    "minSecurityLevel": 26,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics"
+    ]
+  },
+  "helios": {
+    "root": true,
+    "hackLevel": 818,
+    "maxMoney": 14035227525,
+    "ram": 128,
+    "serverGrowth": 71,
+    "securityLevel": 94,
+    "minSecurityLevel": 31,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios"
+    ]
+  },
+  "omnitek": {
+    "root": true,
+    "hackLevel": 947,
+    "maxMoney": 340366504575,
+    "ram": 256,
+    "serverGrowth": 98,
+    "securityLevel": 93,
+    "minSecurityLevel": 31,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek"
+    ]
+  },
+  "blade": {
+    "root": true,
+    "hackLevel": 964,
+    "maxMoney": 258218265450,
+    "ram": 64,
+    "serverGrowth": 76,
+    "securityLevel": 97,
+    "minSecurityLevel": 32,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "blade"
+    ]
+  },
+  "nwo": {
+    "root": true,
+    "hackLevel": 1252,
+    "maxMoney": 776402769375,
+    "ram": 0,
+    "serverGrowth": 95,
+    "securityLevel": 99,
+    "minSecurityLevel": 33,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "nwo"
+    ]
+  },
+  "clarkinc": {
+    "root": true,
+    "hackLevel": 1024,
+    "maxMoney": 523793399500,
+    "ram": 0,
+    "serverGrowth": 56,
+    "securityLevel": 57,
+    "minSecurityLevel": 19,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "clarkinc"
+    ]
+  },
+  "ecorp": {
+    "root": true,
+    "hackLevel": 1221,
+    "maxMoney": 1283568532700,
+    "ram": 0,
+    "serverGrowth": 99,
+    "securityLevel": 99,
+    "minSecurityLevel": 33,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "clarkinc",
+      "ecorp"
+    ]
+  },
+  "fulcrumassets": {
+    "root": true,
+    "hackLevel": 1554,
+    "maxMoney": 25000000,
+    "ram": 0,
+    "serverGrowth": 1,
+    "securityLevel": 99,
+    "minSecurityLevel": 33,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "clarkinc",
+      "fulcrumassets"
+    ]
+  },
+  "4sigma": {
+    "root": true,
+    "hackLevel": 1078,
+    "maxMoney": 472639758650,
+    "ram": 0,
+    "serverGrowth": 85,
+    "securityLevel": 56,
+    "minSecurityLevel": 19,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma"
+    ]
+  },
+  "b-and-a": {
+    "root": true,
+    "hackLevel": 1000,
+    "maxMoney": 411139226175,
+    "ram": 0,
+    "serverGrowth": 60,
+    "securityLevel": 76,
+    "minSecurityLevel": 25,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma",
+      "b-and-a"
+    ]
+  },
+  "megacorp": {
+    "root": true,
+    "hackLevel": 1260,
+    "maxMoney": 1408379002700,
+    "ram": 0,
+    "serverGrowth": 99,
+    "securityLevel": 99,
+    "minSecurityLevel": 33,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma",
+      "b-and-a",
+      "megacorp"
+    ]
+  },
+  "The-Cave": {
+    "root": true,
+    "hackLevel": 925,
+    "maxMoney": 0,
+    "ram": 0,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma",
+      "b-and-a",
+      "The-Cave"
+    ]
+  },
+  "kuai-gong": {
+    "root": true,
+    "hackLevel": 1271,
+    "maxMoney": 702149778950,
+    "ram": 0,
+    "serverGrowth": 99,
+    "securityLevel": 97,
+    "minSecurityLevel": 32,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "kuai-gong"
+    ]
+  },
+  "powerhouse-fitness": {
+    "root": true,
+    "hackLevel": 1010,
+    "maxMoney": 22500000000,
+    "ram": 16,
+    "serverGrowth": 53,
+    "securityLevel": 59,
+    "minSecurityLevel": 20,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "kuai-gong",
+      "powerhouse-fitness"
+    ]
+  },
+  "zeus-med": {
+    "root": true,
+    "hackLevel": 829,
+    "maxMoney": 34706509000,
+    "ram": 0,
+    "serverGrowth": 72,
+    "securityLevel": 89,
+    "minSecurityLevel": 30,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "zeus-med"
+    ]
+  },
+  "unitalife": {
+    "root": true,
+    "hackLevel": 825,
+    "maxMoney": 26286228875,
+    "ram": 32,
+    "serverGrowth": 78,
+    "securityLevel": 70,
+    "minSecurityLevel": 23,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "unitalife"
+    ]
+  },
+  "catalyst": {
+    "root": true,
+    "hackLevel": 405,
+    "maxMoney": 11436658675,
+    "ram": 32,
+    "serverGrowth": 45,
+    "securityLevel": 60,
+    "minSecurityLevel": 20,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst"
+    ]
+  },
+  "alpha-ent": {
+    "root": true,
+    "hackLevel": 571,
+    "maxMoney": 15725999750,
+    "ram": 64,
+    "serverGrowth": 59,
+    "securityLevel": 60,
+    "minSecurityLevel": 20,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst",
+      "alpha-ent"
+    ]
+  },
+  "aevum-police": {
+    "root": true,
+    "hackLevel": 412,
+    "maxMoney": 5571384700,
+    "ram": 16,
+    "serverGrowth": 48,
+    "securityLevel": 74,
+    "minSecurityLevel": 25,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst",
+      "aevum-police"
+    ]
+  },
+  "aerocorp": {
+    "root": true,
+    "hackLevel": 876,
+    "maxMoney": 27356033425,
+    "ram": 0,
+    "serverGrowth": 55,
+    "securityLevel": 83,
+    "minSecurityLevel": 28,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst",
+      "aevum-police",
+      "aerocorp"
+    ]
+  },
+  "avmnite-02h": {
+    "root": true,
+    "hackLevel": 214,
+    "maxMoney": 0,
+    "ram": 64,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": true,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h"
+    ]
+  },
+  "summit-uni": {
+    "root": true,
+    "hackLevel": 436,
+    "maxMoney": 7779428900,
+    "ram": 32,
+    "serverGrowth": 50,
+    "securityLevel": 62,
+    "minSecurityLevel": 21,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni"
+    ]
+  },
+  "rho-construction": {
+    "root": true,
+    "hackLevel": 520,
+    "maxMoney": 16860057375,
+    "ram": 32,
+    "serverGrowth": 40,
+    "securityLevel": 56,
+    "minSecurityLevel": 19,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "rho-construction"
+    ]
+  },
+  "millenium-fitness": {
+    "root": true,
+    "hackLevel": 500,
+    "maxMoney": 6250000000,
+    "ram": 256,
+    "serverGrowth": 35,
+    "securityLevel": 54,
+    "minSecurityLevel": 18,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness"
+    ]
+  },
+  "galactic-cyber": {
+    "root": true,
+    "hackLevel": 875,
+    "maxMoney": 21214446850,
+    "ram": 0,
+    "serverGrowth": 80,
+    "securityLevel": 59,
+    "minSecurityLevel": 20,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness",
+      "galactic-cyber"
+    ]
+  },
+  "snap-fitness": {
+    "root": true,
+    "hackLevel": 710,
+    "maxMoney": 11250000000,
+    "ram": 0,
+    "serverGrowth": 44,
+    "securityLevel": 60,
+    "minSecurityLevel": 20,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness",
+      "snap-fitness"
+    ]
+  },
+  "omnia": {
+    "root": true,
+    "hackLevel": 880,
+    "maxMoney": 23948499200,
+    "ram": 16,
+    "serverGrowth": 60,
+    "securityLevel": 87,
+    "minSecurityLevel": 29,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness",
+      "snap-fitness",
+      "omnia"
+    ]
+  },
+  "syscore": {
+    "root": true,
+    "hackLevel": 580,
+    "maxMoney": 12334680225,
+    "ram": 0,
+    "serverGrowth": 69,
+    "securityLevel": 65,
+    "minSecurityLevel": 22,
+    "backdoor": false,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "syscore"
+    ]
+  },
+  "hong-fang-tea": {
+    "root": true,
+    "hackLevel": 30,
+    "maxMoney": 75000000,
+    "ram": 16,
+    "serverGrowth": 20,
+    "securityLevel": 9.827999999999877,
+    "minSecurityLevel": 5,
+    "backdoor": true,
+    "path": [
+      "home",
+      "hong-fang-tea"
+    ]
+  },
+  "zer0": {
+    "root": true,
+    "hackLevel": 75,
+    "maxMoney": 187500000,
+    "ram": 32,
+    "serverGrowth": 40,
+    "securityLevel": 12.748,
+    "minSecurityLevel": 8,
+    "backdoor": true,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0"
+    ]
+  },
+  "neo-net": {
+    "root": true,
+    "hackLevel": 50,
+    "maxMoney": 125000000,
+    "ram": 32,
+    "serverGrowth": 25,
+    "securityLevel": 12.939750000000002,
+    "minSecurityLevel": 8,
+    "backdoor": true,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0",
+      "neo-net"
+    ]
+  },
+  "netlink": {
+    "root": true,
+    "hackLevel": 413,
+    "maxMoney": 6875000000,
+    "ram": 64,
+    "serverGrowth": 46,
+    "securityLevel": 70,
+    "minSecurityLevel": 23,
+    "backdoor": false,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0",
+      "neo-net",
+      "netlink"
+    ]
+  },
+  "harakiri-sushi": {
+    "root": true,
+    "hackLevel": 40,
+    "maxMoney": 100000000,
+    "ram": 16,
+    "serverGrowth": 40,
+    "securityLevel": 9.851999999999899,
+    "minSecurityLevel": 5,
+    "backdoor": true,
+    "path": [
+      "home",
+      "harakiri-sushi"
+    ]
+  },
+  "nectar-net": {
+    "root": true,
+    "hackLevel": 20,
+    "maxMoney": 68750000,
+    "ram": 16,
+    "serverGrowth": 25,
+    "securityLevel": 11.843749999999885,
+    "minSecurityLevel": 7,
+    "backdoor": true,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net"
+    ]
+  },
+  "phantasy": {
+    "root": true,
+    "hackLevel": 100,
+    "maxMoney": 600000000,
+    "ram": 32,
+    "serverGrowth": 35,
+    "securityLevel": 11.50174999999999,
+    "minSecurityLevel": 7,
+    "backdoor": true,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy"
+    ]
+  },
+  "crush-fitness": {
+    "root": true,
+    "hackLevel": 263,
+    "maxMoney": 1182538250,
+    "ram": 0,
+    "serverGrowth": 30,
+    "securityLevel": 41,
+    "minSecurityLevel": 14,
+    "backdoor": false,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy",
+      "crush-fitness"
+    ]
+  },
+  "I.I.I.I": {
+    "root": true,
+    "hackLevel": 353,
+    "maxMoney": 0,
+    "ram": 128,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy",
+      "crush-fitness",
+      "I.I.I.I"
+    ]
+  },
+  "omega-net": {
+    "root": true,
+    "hackLevel": 196,
+    "maxMoney": 1500388300,
+    "ram": 32,
+    "serverGrowth": 31,
+    "securityLevel": 21.12,
+    "minSecurityLevel": 10,
+    "backdoor": true,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "omega-net"
+    ]
+  },
+  "computek": {
+    "root": true,
+    "hackLevel": 394,
+    "maxMoney": 6216620925,
+    "ram": 0,
+    "serverGrowth": 54,
+    "securityLevel": 63,
+    "minSecurityLevel": 21,
+    "backdoor": false,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "omega-net",
+      "computek"
+    ]
+  },
+  "iron-gym": {
+    "root": true,
+    "hackLevel": 100,
+    "maxMoney": 500000000,
+    "ram": 32,
+    "serverGrowth": 20,
+    "securityLevel": 17.899999999999984,
+    "minSecurityLevel": 10,
+    "backdoor": true,
+    "path": [
+      "home",
+      "iron-gym"
+    ]
+  },
+  "darkweb": {
+    "root": false,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 0,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "darkweb"
+    ]
+  },
+  "pserv-0": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-0"
+    ]
+  },
+  "pserv-1": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-1"
+    ]
+  },
+  "pserv-2": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-2"
+    ]
+  },
+  "pserv-3": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-3"
+    ]
+  },
+  "pserv-4": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-4"
+    ]
+  },
+  "pserv-5": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-5"
+    ]
+  },
+  "pserv-6": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-6"
+    ]
+  },
+  "pserv-7": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-7"
+    ]
+  },
+  "pserv-8": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-8"
+    ]
+  },
+  "pserv-9": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-9"
+    ]
+  },
+  "pserv-10": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-10"
+    ]
+  },
+  "pserv-11": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-11"
+    ]
+  },
+  "pserv-12": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-12"
+    ]
+  },
+  "pserv-13": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-13"
+    ]
+  },
+  "pserv-14": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-14"
+    ]
+  },
+  "pserv-15": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-15"
+    ]
+  },
+  "pserv-16": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-16"
+    ]
+  },
+  "pserv-17": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-17"
+    ]
+  },
+  "pserv-18": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-18"
+    ]
+  },
+  "pserv-19": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-19"
+    ]
+  },
+  "pserv-20": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-20"
+    ]
+  },
+  "pserv-21": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-21"
+    ]
+  },
+  "pserv-22": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-22"
+    ]
+  },
+  "pserv-23": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-23"
+    ]
+  },
+  "pserv-24": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 65536,
+    "serverGrowth": 1,
+    "securityLevel": 1,
+    "minSecurityLevel": 1,
+    "backdoor": false,
+    "path": [
+      "home",
+      "pserv-24"
+    ]
+  }
+}

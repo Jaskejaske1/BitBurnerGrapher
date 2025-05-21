@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bitburner Network Graph</title>
+  <script src="https://unpkg.com/cytoscape@3.21.0/dist/cytoscape.min.js"></script>
+  <style>#cy { width: 100vw; height: 100vh; }</style>
+</head>
+<body>
+  <div id="cy"></div>
+  <script>
+    // Load the JSON data from file
+    fetch('network-graph.json')
+      .then(response => response.json())
+      .then(graphData => {
+        const nodes = new Set();
+        const edges = [];
+
+        for (const [server, neighbors] of Object.entries(graphData)) {
+          nodes.add(server);
+          for (const neighbor of neighbors) {
+            if (server < neighbor) { // Avoid duplicates
+              edges.push({ data: { id: `${server}_${neighbor}`, source: server, target: neighbor } });
+            }
+          }
+        }
+
+        const cy = cytoscape({
+          container: document.getElementById('cy'),
+          elements: [
+            ...[...nodes].map(id => ({ data: { id } })),
+            ...edges
+          ],
+          style: [
+            { selector: 'node', style: { 'label': 'data(id)', 'background-color': '#61bffc' }},
+            { selector: 'edge', style: { 'line-color': '#ccc' }}
+          ],
+          layout: { name: 'cose' }
+        });
+      })
+      .catch(error => console.error('Error loading the graph data:', error));
+  </script>
+</body>
+</html>

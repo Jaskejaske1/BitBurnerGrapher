@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bitburner Network Viewer</title>
+    <script src="https://unpkg.com/cytoscape@3.32.0/dist/cytoscape.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background: #0d1117;
+        color: #c9d1d9;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      #controls {
+        background: #161b22;
+        padding: 8px 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      #controls label {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      input[type="text"] {
+        background: #0d1117;
+        color: white;
+        border: 1px solid #30363d;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+      button {
+        background: #238636;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #cy {
+        flex: 1;
+      }
+      .tooltip {
+        position: absolute;
+        background: #161b22;
+        color: #eee;
+        padding: 6px 10px;
+        font-size: 12px;
+        border: 1px solid #30363d;
+        border-radius: 4px;
+        pointer-events: none;
+        z-index: 100;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <label><input type="checkbox" id="filterRooted" checked />Rooted</label>
+      <label
+        ><input type="checkbox" id="filterProfit" checked />Profitable</label
+      >
+      <label><input type="checkbox" id="filterPserv" />Personal Servers</label>
+      <label
+        >Search:
+        <input type="text" id="searchInput" placeholder="e.g. megacorp"
+      /></label>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <div id="cy"></div>
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+      async function loadJSON(file) {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error(`Failed to load ${file}`);
+        return res.json();
+      }
+
+      async function render() {
+        const [graphData, serverInfo, hackTargets] = await Promise.all([
+          loadJSON("network-graph.json"),
+          loadJSON("server-info.json"),
+          loadJSON("hack-targets.json"),
+        ]);
+
+        const tooltip = document.getElementById("tooltip");
+        const nodes = [],
+          edges = [];
+
+        const moneyValues = Object.values(serverInfo).map(
+          (s) => s.maxMoney || 0
+        );
+        const minMoney = Math.min(...moneyValues);
+        const maxMoney = Math.max(...moneyValues);
+        const normalize = (m) =>
+          10 + ((Math.max(m || 0, 0) - minMoney) / (maxMoney - minMoney)) * 40;
+
+        const added = new Set();
+        for (const [server, neighbors] of Object.entries(graphData)) {
+          if (!added.has(server)) {
+            const info = serverInfo[server] || {};
+            nodes.push({
+              data: {
+                id: server,
+                label: server,
+                root: info.root,
+                maxMoney: info.maxMoney,
+                ram: info.ram,
+                hackLevel: info.hackLevel,
+                growth: info.serverGrowth,
+                security: info.securityLevel,
+                minSecurity: info.minSecurityLevel,
+                isHome: server === "home",
+                isPserv: server.startsWith("pserv-"),
+              },
+            });
+            added.add(server);
+          }
+          for (const neighbor of neighbors) {
+            const edgeId = [server, neighbor].sort().join("_");
+            if (!edges.some((e) => e.data.id === edgeId)) {
+              edges.push({
+                data: { id: edgeId, source: server, target: neighbor },
+              });
+            }
+          }
+        }
+
+        const cy = cytoscape({
+          container: document.getElementById("cy"),
+          elements: [...nodes, ...edges],
+          style: [
+            {
+              selector: "node",
+              style: {
+                label: "data(label)",
+                "text-valign": "top",
+                "text-halign": "center",
+                "text-margin-y": "-10px",
+                color: "#c9d1d9",
+                "text-outline-color": "#0d1117",
+                "text-outline-width": 2,
+                "font-size": "10px",
+                "background-color": (ele) => {
+                  if (ele.data("isHome")) return "#ffd33d";
+                  return ele.data("root") ? "#26a641" : "#d73a49";
+                },
+                "border-color": (ele) =>
+                  ele.data("isPserv") ? "#58a6ff" : "#444",
+                "border-width": (ele) => (ele.data("isPserv") ? 3 : 1),
+                width: (ele) => normalize(ele.data("maxMoney")),
+                height: (ele) => normalize(ele.data("maxMoney")),
+              },
+            },
+            {
+              selector: "edge",
+              style: {
+                "line-color": "#444",
+                width: 1,
+              },
+            },
+          ],
+          layout: { name: "cose", animate: true },
+        });
+
+        // Tooltip logic
+        cy.on("mouseover", "node", (evt) => {
+          const d = evt.target.data();
+          tooltip.innerHTML = `
+          <strong>${d.label}</strong><br/>
+          Rooted: ${d.root}<br/>
+          RAM: ${d.ram} GB<br/>
+          Hack Level: ${d.hackLevel}<br/>
+          Max Money: $${(d.maxMoney || 0).toLocaleString()}<br/>
+          Growth: ${d.growth || "N/A"}<br/>
+          Security: ${d.security || "N/A"}<br/>
+          Min Security: ${d.minSecurity || "N/A"}
+        `;
+          tooltip.style.display = "block";
+        });
+
+        cy.on("mouseout", "node", () => {
+          tooltip.style.display = "none";
+        });
+
+        cy.on("mousemove", (evt) => {
+          if (evt.renderedPosition) {
+            tooltip.style.left = evt.renderedPosition.x + 15 + "px";
+            tooltip.style.top = evt.renderedPosition.y + 15 + "px";
+          }
+        });
+
+        // FILTERS
+        function applyFilters() {
+          const rooted = document.getElementById("filterRooted").checked;
+          const profit = document.getElementById("filterProfit").checked;
+          const pserv = document.getElementById("filterPserv").checked;
+          const search = document
+            .getElementById("searchInput")
+            .value.toLowerCase();
+
+          cy.nodes().forEach((n) => {
+            const d = n.data();
+            const show =
+              d.label === "home" ||
+              ((!rooted || d.root) &&
+                (!profit || d.maxMoney > 0) &&
+                (!pserv || d.isPserv) &&
+                (search === "" || d.label.toLowerCase().includes(search)));
+
+            n.style("display", show ? "element" : "none");
+          });
+        }
+
+        // Bind events
+        ["filterRooted", "filterProfit", "filterPserv", "searchInput"].forEach(
+          (id) =>
+            document.getElementById(id).addEventListener("input", applyFilters)
+        );
+        document.getElementById("resetBtn").addEventListener("click", () => {
+          document.getElementById("filterRooted").checked = true;
+          document.getElementById("filterProfit").checked = true;
+          document.getElementById("filterPserv").checked = false;
+          document.getElementById("searchInput").value = "";
+          applyFilters();
+        });
+
+        applyFilters();
+      }
+
+      render().catch((err) => alert("Failed to load graph: " + err));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bitburner Network Visualizer</title>
+  <script src="https://unpkg.com/cytoscape@3.24.0/dist/cytoscape.min.js"></script>
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: sans-serif; }
+    #cy { width: 100vw; height: 100vh; }
+    .tooltip {
+      position: absolute;
+      background: #111;
+      color: #eee;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div id="cy"></div>
+  <div class="tooltip" id="tooltip"></div>
+  <script>
+    // === EMBEDDED DATA (replace these blocks if needed) ===
+    /* INSERT CONTENTS OF network-graph.json HERE */
+    const graphData = {
+  "home": [
+    "n00dles",
+    "foodnstuff",
+    "sigma-cosmetics",
+    "joesguns",
+    "hong-fang-tea",
+    "harakiri-sushi",
+    "iron-gym",
+    "darkweb",
+    "pserv-0",
+    "pserv-1",
+    "pserv-2",
+    "pserv-3",
+    "pserv-4",
+    "pserv-5",
+    "pserv-6",
+    "pserv-7",
+    "pserv-8",
+    "pserv-9",
+    "pserv-10",
+    "pserv-11",
+    "pserv-12",
+    "pserv-13",
+    "pserv-14",
+    "pserv-15",
+    "pserv-16",
+    "pserv-17",
+    "pserv-18",
+    "pserv-19",
+    "pserv-20",
+    "pserv-21",
+    "pserv-22",
+    "pserv-23",
+    "pserv-24"
+  ],
+  "n00dles": [
+    "home",
+    "CSEC"
+  ],
+  "CSEC": [
+    "n00dles"
+  ],
+  "foodnstuff": [
+    "home"
+  ],
+  "sigma-cosmetics": [
+    "home"
+  ],
+  "joesguns": [
+    "home",
+    "max-hardware"
+  ],
+  "max-hardware": [
+    "joesguns",
+    "silver-helix"
+  ],
+  "silver-helix": [
+    "max-hardware",
+    "the-hub",
+    "johnson-ortho",
+    "avmnite-02h"
+  ],
+  "the-hub": [
+    "silver-helix",
+    "zb-institute"
+  ],
+  "zb-institute": [
+    "the-hub"
+  ],
+  "johnson-ortho": [
+    "silver-helix",
+    "rothman-uni",
+    "catalyst"
+  ],
+  "rothman-uni": [
+    "johnson-ortho",
+    "lexo-corp"
+  ],
+  "lexo-corp": [
+    "rothman-uni",
+    "global-pharm"
+  ],
+  "global-pharm": [
+    "lexo-corp",
+    "deltaone",
+    "unitalife"
+  ],
+  "deltaone": [
+    "global-pharm",
+    "defcomm",
+    "icarus",
+    "univ-energy",
+    "solaris",
+    "zeus-med"
+  ],
+  "defcomm": [
+    "deltaone",
+    "taiyang-digital",
+    "nova-med"
+  ],
+  "taiyang-digital": [
+    "defcomm",
+    "run4theh111z"
+  ],
+  "run4theh111z": [
+    "taiyang-digital"
+  ],
+  "nova-med": [
+    "defcomm"
+  ],
+  "icarus": [
+    "deltaone",
+    "infocomm"
+  ],
+  "infocomm": [
+    "icarus"
+  ],
+  "univ-energy": [
+    "deltaone"
+  ],
+  "solaris": [
+    "deltaone",
+    "zb-def"
+  ],
+  "zb-def": [
+    "solaris",
+    "titan-labs",
+    "microdyne",
+    "applied-energetics"
+  ],
+  "titan-labs": [
+    "zb-def"
+  ],
+  "microdyne": [
+    "zb-def",
+    "fulcrumtech",
+    "stormtech",
+    "vitalife"
+  ],
+  "fulcrumtech": [
+    "microdyne"
+  ],
+  "stormtech": [
+    "microdyne"
+  ],
+  "vitalife": [
+    "microdyne",
+    "."
+  ],
+  ".": [
+    "vitalife"
+  ],
+  "applied-energetics": [
+    "zb-def",
+    "helios"
+  ],
+  "helios": [
+    "applied-energetics",
+    "omnitek",
+    "4sigma",
+    "kuai-gong"
+  ],
+  "omnitek": [
+    "helios",
+    "blade",
+    "nwo",
+    "clarkinc"
+  ],
+  "blade": [
+    "omnitek"
+  ],
+  "nwo": [
+    "omnitek"
+  ],
+  "clarkinc": [
+    "omnitek",
+    "ecorp",
+    "fulcrumassets"
+  ],
+  "ecorp": [
+    "clarkinc"
+  ],
+  "fulcrumassets": [
+    "clarkinc"
+  ],
+  "4sigma": [
+    "helios",
+    "b-and-a"
+  ],
+  "b-and-a": [
+    "4sigma",
+    "megacorp",
+    "The-Cave"
+  ],
+  "megacorp": [
+    "b-and-a"
+  ],
+  "The-Cave": [
+    "b-and-a"
+  ],
+  "kuai-gong": [
+    "helios",
+    "powerhouse-fitness"
+  ],
+  "powerhouse-fitness": [
+    "kuai-gong"
+  ],
+  "zeus-med": [
+    "deltaone"
+  ],
+  "unitalife": [
+    "global-pharm"
+  ],
+  "catalyst": [
+    "johnson-ortho",
+    "alpha-ent",
+    "aevum-police"
+  ],
+  "alpha-ent": [
+    "catalyst"
+  ],
+  "aevum-police": [
+    "catalyst",
+    "aerocorp"
+  ],
+  "aerocorp": [
+    "aevum-police"
+  ],
+  "avmnite-02h": [
+    "silver-helix",
+    "summit-uni",
+    "syscore"
+  ],
+  "summit-uni": [
+    "avmnite-02h",
+    "rho-construction",
+    "millenium-fitness"
+  ],
+  "rho-construction": [
+    "summit-uni"
+  ],
+  "millenium-fitness": [
+    "summit-uni",
+    "galactic-cyber",
+    "snap-fitness"
+  ],
+  "galactic-cyber": [
+    "millenium-fitness"
+  ],
+  "snap-fitness": [
+    "millenium-fitness",
+    "omnia"
+  ],
+  "omnia": [
+    "snap-fitness"
+  ],
+  "syscore": [
+    "avmnite-02h"
+  ],
+  "hong-fang-tea": [
+    "home",
+    "zer0"
+  ],
+  "zer0": [
+    "hong-fang-tea",
+    "neo-net"
+  ],
+  "neo-net": [
+    "zer0",
+    "netlink"
+  ],
+  "netlink": [
+    "neo-net"
+  ],
+  "harakiri-sushi": [
+    "home",
+    "nectar-net"
+  ],
+  "nectar-net": [
+    "harakiri-sushi",
+    "phantasy",
+    "omega-net"
+  ],
+  "phantasy": [
+    "nectar-net",
+    "crush-fitness"
+  ],
+  "crush-fitness": [
+    "phantasy",
+    "I.I.I.I"
+  ],
+  "I.I.I.I": [
+    "crush-fitness"
+  ],
+  "omega-net": [
+    "nectar-net",
+    "computek"
+  ],
+  "computek": [
+    "omega-net"
+  ],
+  "iron-gym": [
+    "home"
+  ],
+  "darkweb": [
+    "home"
+  ],
+  "pserv-0": [
+    "home"
+  ],
+  "pserv-1": [
+    "home"
+  ],
+  "pserv-2": [
+    "home"
+  ],
+  "pserv-3": [
+    "home"
+  ],
+  "pserv-4": [
+    "home"
+  ],
+  "pserv-5": [
+    "home"
+  ],
+  "pserv-6": [
+    "home"
+  ],
+  "pserv-7": [
+    "home"
+  ],
+  "pserv-8": [
+    "home"
+  ],
+  "pserv-9": [
+    "home"
+  ],
+  "pserv-10": [
+    "home"
+  ],
+  "pserv-11": [
+    "home"
+  ],
+  "pserv-12": [
+    "home"
+  ],
+  "pserv-13": [
+    "home"
+  ],
+  "pserv-14": [
+    "home"
+  ],
+  "pserv-15": [
+    "home"
+  ],
+  "pserv-16": [
+    "home"
+  ],
+  "pserv-17": [
+    "home"
+  ],
+  "pserv-18": [
+    "home"
+  ],
+  "pserv-19": [
+    "home"
+  ],
+  "pserv-20": [
+    "home"
+  ],
+  "pserv-21": [
+    "home"
+  ],
+  "pserv-22": [
+    "home"
+  ],
+  "pserv-23": [
+    "home"
+  ],
+  "pserv-24": [
+    "home"
+  ]
+};
+    /* INSERT CONTENTS OF server-info.json HERE */
+    const serverInfo =  {
+  "home": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 128,
+    "path": [
+      "home"
+    ]
+  },
+  "n00dles": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 1750000,
+    "ram": 4,
+    "path": [
+      "home",
+      "n00dles"
+    ]
+  },
+  "CSEC": {
+    "root": true,
+    "hackLevel": 52,
+    "maxMoney": 0,
+    "ram": 8,
+    "path": [
+      "home",
+      "n00dles",
+      "CSEC"
+    ]
+  },
+  "foodnstuff": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 50000000,
+    "ram": 16,
+    "path": [
+      "home",
+      "foodnstuff"
+    ]
+  },
+  "sigma-cosmetics": {
+    "root": true,
+    "hackLevel": 5,
+    "maxMoney": 57500000,
+    "ram": 16,
+    "path": [
+      "home",
+      "sigma-cosmetics"
+    ]
+  },
+  "joesguns": {
+    "root": true,
+    "hackLevel": 10,
+    "maxMoney": 62500000,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns"
+    ]
+  },
+  "max-hardware": {
+    "root": true,
+    "hackLevel": 80,
+    "maxMoney": 250000000,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware"
+    ]
+  },
+  "silver-helix": {
+    "root": true,
+    "hackLevel": 150,
+    "maxMoney": 1125000000,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix"
+    ]
+  },
+  "the-hub": {
+    "root": true,
+    "hackLevel": 301,
+    "maxMoney": 4371199275,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "the-hub"
+    ]
+  },
+  "zb-institute": {
+    "root": false,
+    "hackLevel": 757,
+    "maxMoney": 24191900650,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "the-hub",
+      "zb-institute"
+    ]
+  },
+  "johnson-ortho": {
+    "root": true,
+    "hackLevel": 260,
+    "maxMoney": 1948392850,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho"
+    ]
+  },
+  "rothman-uni": {
+    "root": true,
+    "hackLevel": 407,
+    "maxMoney": 5066353500,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni"
+    ]
+  },
+  "lexo-corp": {
+    "root": true,
+    "hackLevel": 739,
+    "maxMoney": 18085187250,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp"
+    ]
+  },
+  "global-pharm": {
+    "root": true,
+    "hackLevel": 824,
+    "maxMoney": 42698560325,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm"
+    ]
+  },
+  "deltaone": {
+    "root": false,
+    "hackLevel": 855,
+    "maxMoney": 35453291975,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone"
+    ]
+  },
+  "defcomm": {
+    "root": false,
+    "hackLevel": 1050,
+    "maxMoney": 20448892200,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm"
+    ]
+  },
+  "taiyang-digital": {
+    "root": false,
+    "hackLevel": 917,
+    "maxMoney": 21415297625,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm",
+      "taiyang-digital"
+    ]
+  },
+  "run4theh111z": {
+    "root": true,
+    "hackLevel": 546,
+    "maxMoney": 0,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm",
+      "taiyang-digital",
+      "run4theh111z"
+    ]
+  },
+  "nova-med": {
+    "root": true,
+    "hackLevel": 844,
+    "maxMoney": 31113279100,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "defcomm",
+      "nova-med"
+    ]
+  },
+  "icarus": {
+    "root": false,
+    "hackLevel": 868,
+    "maxMoney": 24198317775,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "icarus"
+    ]
+  },
+  "infocomm": {
+    "root": false,
+    "hackLevel": 926,
+    "maxMoney": 18926376125,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "icarus",
+      "infocomm"
+    ]
+  },
+  "univ-energy": {
+    "root": true,
+    "hackLevel": 886,
+    "maxMoney": 27839492600,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "univ-energy"
+    ]
+  },
+  "solaris": {
+    "root": false,
+    "hackLevel": 777,
+    "maxMoney": 17752645125,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris"
+    ]
+  },
+  "zb-def": {
+    "root": true,
+    "hackLevel": 783,
+    "maxMoney": 27293100225,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def"
+    ]
+  },
+  "titan-labs": {
+    "root": false,
+    "hackLevel": 852,
+    "maxMoney": 22286180600,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "titan-labs"
+    ]
+  },
+  "microdyne": {
+    "root": false,
+    "hackLevel": 813,
+    "maxMoney": 13538451850,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne"
+    ]
+  },
+  "fulcrumtech": {
+    "root": false,
+    "hackLevel": 1234,
+    "maxMoney": 39922521825,
+    "ram": 2048,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "fulcrumtech"
+    ]
+  },
+  "stormtech": {
+    "root": false,
+    "hackLevel": 1017,
+    "maxMoney": 29993615675,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "stormtech"
+    ]
+  },
+  "vitalife": {
+    "root": false,
+    "hackLevel": 789,
+    "maxMoney": 18370101700,
+    "ram": 128,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "vitalife"
+    ]
+  },
+  ".": {
+    "root": true,
+    "hackLevel": 511,
+    "maxMoney": 0,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "microdyne",
+      "vitalife",
+      "."
+    ]
+  },
+  "applied-energetics": {
+    "root": true,
+    "hackLevel": 819,
+    "maxMoney": 19680949150,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics"
+    ]
+  },
+  "helios": {
+    "root": false,
+    "hackLevel": 818,
+    "maxMoney": 14035227525,
+    "ram": 128,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios"
+    ]
+  },
+  "omnitek": {
+    "root": false,
+    "hackLevel": 947,
+    "maxMoney": 340366504575,
+    "ram": 256,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek"
+    ]
+  },
+  "blade": {
+    "root": false,
+    "hackLevel": 964,
+    "maxMoney": 258218265450,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "blade"
+    ]
+  },
+  "nwo": {
+    "root": false,
+    "hackLevel": 1252,
+    "maxMoney": 776402769375,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "nwo"
+    ]
+  },
+  "clarkinc": {
+    "root": false,
+    "hackLevel": 1024,
+    "maxMoney": 523793399500,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "clarkinc"
+    ]
+  },
+  "ecorp": {
+    "root": false,
+    "hackLevel": 1221,
+    "maxMoney": 1283568532700,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "clarkinc",
+      "ecorp"
+    ]
+  },
+  "fulcrumassets": {
+    "root": false,
+    "hackLevel": 1554,
+    "maxMoney": 25000000,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "omnitek",
+      "clarkinc",
+      "fulcrumassets"
+    ]
+  },
+  "4sigma": {
+    "root": false,
+    "hackLevel": 1078,
+    "maxMoney": 472639758650,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma"
+    ]
+  },
+  "b-and-a": {
+    "root": false,
+    "hackLevel": 1000,
+    "maxMoney": 411139226175,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma",
+      "b-and-a"
+    ]
+  },
+  "megacorp": {
+    "root": false,
+    "hackLevel": 1260,
+    "maxMoney": 1408379002700,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma",
+      "b-and-a",
+      "megacorp"
+    ]
+  },
+  "The-Cave": {
+    "root": false,
+    "hackLevel": 925,
+    "maxMoney": 0,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "4sigma",
+      "b-and-a",
+      "The-Cave"
+    ]
+  },
+  "kuai-gong": {
+    "root": false,
+    "hackLevel": 1271,
+    "maxMoney": 702149778950,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "kuai-gong"
+    ]
+  },
+  "powerhouse-fitness": {
+    "root": false,
+    "hackLevel": 1010,
+    "maxMoney": 22500000000,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "solaris",
+      "zb-def",
+      "applied-energetics",
+      "helios",
+      "kuai-gong",
+      "powerhouse-fitness"
+    ]
+  },
+  "zeus-med": {
+    "root": false,
+    "hackLevel": 829,
+    "maxMoney": 34706509000,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "deltaone",
+      "zeus-med"
+    ]
+  },
+  "unitalife": {
+    "root": true,
+    "hackLevel": 825,
+    "maxMoney": 26286228875,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "rothman-uni",
+      "lexo-corp",
+      "global-pharm",
+      "unitalife"
+    ]
+  },
+  "catalyst": {
+    "root": true,
+    "hackLevel": 405,
+    "maxMoney": 11436658675,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst"
+    ]
+  },
+  "alpha-ent": {
+    "root": true,
+    "hackLevel": 571,
+    "maxMoney": 15725999750,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst",
+      "alpha-ent"
+    ]
+  },
+  "aevum-police": {
+    "root": true,
+    "hackLevel": 412,
+    "maxMoney": 5571384700,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst",
+      "aevum-police"
+    ]
+  },
+  "aerocorp": {
+    "root": false,
+    "hackLevel": 876,
+    "maxMoney": 27356033425,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho",
+      "catalyst",
+      "aevum-police",
+      "aerocorp"
+    ]
+  },
+  "avmnite-02h": {
+    "root": true,
+    "hackLevel": 214,
+    "maxMoney": 0,
+    "ram": 64,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h"
+    ]
+  },
+  "summit-uni": {
+    "root": true,
+    "hackLevel": 436,
+    "maxMoney": 7779428900,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni"
+    ]
+  },
+  "rho-construction": {
+    "root": true,
+    "hackLevel": 520,
+    "maxMoney": 16860057375,
+    "ram": 32,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "rho-construction"
+    ]
+  },
+  "millenium-fitness": {
+    "root": true,
+    "hackLevel": 500,
+    "maxMoney": 6250000000,
+    "ram": 256,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness"
+    ]
+  },
+  "galactic-cyber": {
+    "root": false,
+    "hackLevel": 875,
+    "maxMoney": 21214446850,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness",
+      "galactic-cyber"
+    ]
+  },
+  "snap-fitness": {
+    "root": true,
+    "hackLevel": 710,
+    "maxMoney": 11250000000,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness",
+      "snap-fitness"
+    ]
+  },
+  "omnia": {
+    "root": false,
+    "hackLevel": 880,
+    "maxMoney": 23948499200,
+    "ram": 16,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "summit-uni",
+      "millenium-fitness",
+      "snap-fitness",
+      "omnia"
+    ]
+  },
+  "syscore": {
+    "root": true,
+    "hackLevel": 580,
+    "maxMoney": 12334680225,
+    "ram": 0,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "avmnite-02h",
+      "syscore"
+    ]
+  },
+  "hong-fang-tea": {
+    "root": true,
+    "hackLevel": 30,
+    "maxMoney": 75000000,
+    "ram": 16,
+    "path": [
+      "home",
+      "hong-fang-tea"
+    ]
+  },
+  "zer0": {
+    "root": true,
+    "hackLevel": 75,
+    "maxMoney": 187500000,
+    "ram": 32,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0"
+    ]
+  },
+  "neo-net": {
+    "root": true,
+    "hackLevel": 50,
+    "maxMoney": 125000000,
+    "ram": 32,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0",
+      "neo-net"
+    ]
+  },
+  "netlink": {
+    "root": true,
+    "hackLevel": 413,
+    "maxMoney": 6875000000,
+    "ram": 64,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0",
+      "neo-net",
+      "netlink"
+    ]
+  },
+  "harakiri-sushi": {
+    "root": true,
+    "hackLevel": 40,
+    "maxMoney": 100000000,
+    "ram": 16,
+    "path": [
+      "home",
+      "harakiri-sushi"
+    ]
+  },
+  "nectar-net": {
+    "root": true,
+    "hackLevel": 20,
+    "maxMoney": 68750000,
+    "ram": 16,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net"
+    ]
+  },
+  "phantasy": {
+    "root": true,
+    "hackLevel": 100,
+    "maxMoney": 600000000,
+    "ram": 32,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy"
+    ]
+  },
+  "crush-fitness": {
+    "root": true,
+    "hackLevel": 263,
+    "maxMoney": 1182538250,
+    "ram": 0,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy",
+      "crush-fitness"
+    ]
+  },
+  "I.I.I.I": {
+    "root": true,
+    "hackLevel": 353,
+    "maxMoney": 0,
+    "ram": 128,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy",
+      "crush-fitness",
+      "I.I.I.I"
+    ]
+  },
+  "omega-net": {
+    "root": true,
+    "hackLevel": 196,
+    "maxMoney": 1500388300,
+    "ram": 32,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "omega-net"
+    ]
+  },
+  "computek": {
+    "root": true,
+    "hackLevel": 394,
+    "maxMoney": 6216620925,
+    "ram": 0,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "omega-net",
+      "computek"
+    ]
+  },
+  "iron-gym": {
+    "root": true,
+    "hackLevel": 100,
+    "maxMoney": 500000000,
+    "ram": 32,
+    "path": [
+      "home",
+      "iron-gym"
+    ]
+  },
+  "darkweb": {
+    "root": false,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 0,
+    "path": [
+      "home",
+      "darkweb"
+    ]
+  },
+  "pserv-0": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-0"
+    ]
+  },
+  "pserv-1": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-1"
+    ]
+  },
+  "pserv-2": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-2"
+    ]
+  },
+  "pserv-3": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-3"
+    ]
+  },
+  "pserv-4": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-4"
+    ]
+  },
+  "pserv-5": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-5"
+    ]
+  },
+  "pserv-6": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-6"
+    ]
+  },
+  "pserv-7": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-7"
+    ]
+  },
+  "pserv-8": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-8"
+    ]
+  },
+  "pserv-9": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-9"
+    ]
+  },
+  "pserv-10": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-10"
+    ]
+  },
+  "pserv-11": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-11"
+    ]
+  },
+  "pserv-12": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-12"
+    ]
+  },
+  "pserv-13": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-13"
+    ]
+  },
+  "pserv-14": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-14"
+    ]
+  },
+  "pserv-15": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-15"
+    ]
+  },
+  "pserv-16": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-16"
+    ]
+  },
+  "pserv-17": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-17"
+    ]
+  },
+  "pserv-18": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-18"
+    ]
+  },
+  "pserv-19": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-19"
+    ]
+  },
+  "pserv-20": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-20"
+    ]
+  },
+  "pserv-21": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-21"
+    ]
+  },
+  "pserv-22": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-22"
+    ]
+  },
+  "pserv-23": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 4096,
+    "path": [
+      "home",
+      "pserv-23"
+    ]
+  },
+  "pserv-24": {
+    "root": true,
+    "hackLevel": 1,
+    "maxMoney": 0,
+    "ram": 65536,
+    "path": [
+      "home",
+      "pserv-24"
+    ]
+  }
+};
+    /* INSERT CONTENTS OF hack-targets.json HERE */
+    const hackTargets =  [
+  {
+    "name": "the-hub",
+    "money": 4371199275,
+    "hackLevel": 301,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "the-hub"
+    ]
+  },
+  {
+    "name": "johnson-ortho",
+    "money": 1948392850,
+    "hackLevel": 260,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix",
+      "johnson-ortho"
+    ]
+  },
+  {
+    "name": "omega-net",
+    "money": 1500388300,
+    "hackLevel": 196,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "omega-net"
+    ]
+  },
+  {
+    "name": "crush-fitness",
+    "money": 1182538250,
+    "hackLevel": 263,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy",
+      "crush-fitness"
+    ]
+  },
+  {
+    "name": "silver-helix",
+    "money": 1125000000,
+    "hackLevel": 150,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware",
+      "silver-helix"
+    ]
+  },
+  {
+    "name": "phantasy",
+    "money": 600000000,
+    "hackLevel": 100,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net",
+      "phantasy"
+    ]
+  },
+  {
+    "name": "iron-gym",
+    "money": 500000000,
+    "hackLevel": 100,
+    "path": [
+      "home",
+      "iron-gym"
+    ]
+  },
+  {
+    "name": "max-hardware",
+    "money": 250000000,
+    "hackLevel": 80,
+    "path": [
+      "home",
+      "joesguns",
+      "max-hardware"
+    ]
+  },
+  {
+    "name": "zer0",
+    "money": 187500000,
+    "hackLevel": 75,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0"
+    ]
+  },
+  {
+    "name": "neo-net",
+    "money": 125000000,
+    "hackLevel": 50,
+    "path": [
+      "home",
+      "hong-fang-tea",
+      "zer0",
+      "neo-net"
+    ]
+  },
+  {
+    "name": "harakiri-sushi",
+    "money": 100000000,
+    "hackLevel": 40,
+    "path": [
+      "home",
+      "harakiri-sushi"
+    ]
+  },
+  {
+    "name": "hong-fang-tea",
+    "money": 75000000,
+    "hackLevel": 30,
+    "path": [
+      "home",
+      "hong-fang-tea"
+    ]
+  },
+  {
+    "name": "nectar-net",
+    "money": 68750000,
+    "hackLevel": 20,
+    "path": [
+      "home",
+      "harakiri-sushi",
+      "nectar-net"
+    ]
+  },
+  {
+    "name": "joesguns",
+    "money": 62500000,
+    "hackLevel": 10,
+    "path": [
+      "home",
+      "joesguns"
+    ]
+  },
+  {
+    "name": "sigma-cosmetics",
+    "money": 57500000,
+    "hackLevel": 5,
+    "path": [
+      "home",
+      "sigma-cosmetics"
+    ]
+  },
+  {
+    "name": "foodnstuff",
+    "money": 50000000,
+    "hackLevel": 1,
+    "path": [
+      "home",
+      "foodnstuff"
+    ]
+  },
+  {
+    "name": "n00dles",
+    "money": 1750000,
+    "hackLevel": 1,
+    "path": [
+      "home",
+      "n00dles"
+    ]
+  }
+];
+
+    const tooltip = document.getElementById('tooltip');
+    const nodes = [];
+    const edges = [];
+
+    // Precompute min/max money for normalization
+    const moneyValues = Object.values(serverInfo).map(s => s.maxMoney || 0);
+    const moneyMin = Math.min(...moneyValues);
+    const moneyMax = Math.max(...moneyValues);
+
+    const normalizeSize = (money) => {
+      const m = Math.max(money || 0, 0);
+      const scaled = (m - moneyMin) / (moneyMax - moneyMin);
+      return 10 + scaled * 40;
+    };
+
+    const addedNodes = new Set();
+    for (const [server, neighbors] of Object.entries(graphData)) {
+      if (!addedNodes.has(server)) {
+        const info = serverInfo[server] || {};
+        nodes.push({
+          data: {
+            id: server,
+            label: server,
+            root: info.root,
+            maxMoney: info.maxMoney,
+            ram: info.ram,
+            hackLevel: info.hackLevel
+          }
+        });
+        addedNodes.add(server);
+      }
+
+      for (const neighbor of neighbors) {
+        const edgeId = [server, neighbor].sort().join('_');
+        if (!edges.some(e => e.data.id === edgeId)) {
+          edges.push({ data: { id: edgeId, source: server, target: neighbor } });
+        }
+      }
+    }
+
+    const cy = cytoscape({
+      container: document.getElementById('cy'),
+      elements: [...nodes, ...edges],
+      style: [
+        {
+          selector: 'node',
+          style: {
+            'label': 'data(label)',
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'font-size': '7px',
+            'background-color': ele => ele.data('root') ? '#3fb950' : '#f85149',
+            'width': ele => normalizeSize(ele.data('maxMoney')),
+            'height': ele => normalizeSize(ele.data('maxMoney')),
+            'border-width': 1,
+            'border-color': '#333',
+            'color': '#fff',
+          }
+        },
+        {
+          selector: 'edge',
+          style: {
+            'line-color': '#bbb',
+            'width': 1
+          }
+        },
+        {
+          selector: ':selected',
+          style: {
+            'background-color': '#FFD700',
+            'line-color': '#FFD700'
+          }
+        }
+      ],
+      layout: { name: 'cose', animate: true }
+    });
+
+    cy.on('mouseover', 'node', evt => {
+      const d = evt.target.data();
+      tooltip.innerHTML = `
+        <strong>${d.label}</strong><br/>
+        Rooted: ${d.root}<br/>
+        Hack Level: ${d.hackLevel}<br/>
+        RAM: ${d.ram} GB<br/>
+        Max Money: $${(d.maxMoney || 0).toLocaleString()}
+      `;
+      tooltip.style.display = 'block';
+    });
+
+    cy.on('mouseout', 'node', () => {
+      tooltip.style.display = 'none';
+    });
+
+    cy.on('mousemove', evt => {
+      if (evt.renderedPosition) {
+        tooltip.style.left = (evt.renderedPosition.x + 15) + 'px';
+        tooltip.style.top = (evt.renderedPosition.y + 15) + 'px';
+      }
+    });
+  </script>
+</body>
+</html>

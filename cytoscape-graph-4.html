@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bitburner Network Viewer</title>
+    <script src="https://unpkg.com/cytoscape@3.24.0/dist/cytoscape.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      #controls {
+        padding: 10px;
+        background: #161b22;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      input[type="file"] {
+        color: white;
+      }
+      #cy {
+        flex: 1;
+      }
+      .tooltip {
+        position: absolute;
+        background: #161b22;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        pointer-events: none;
+        display: none;
+        z-index: 100;
+        border: 1px solid #30363d;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <label>network-graph.json: <input type="file" id="graphFile" /></label>
+      <label>server-info.json: <input type="file" id="infoFile" /></label>
+      <label>hack-targets.json: <input type="file" id="targetsFile" /></label>
+      <button id="renderBtn">Render Network</button>
+    </div>
+    <div id="cy"></div>
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+      let graphData = {},
+        serverInfo = {},
+        hackTargets = [];
+
+      function readFile(input, callback) {
+        const file = input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => callback(JSON.parse(e.target.result));
+        reader.readAsText(file);
+      }
+
+      document.getElementById("renderBtn").onclick = () => {
+        readFile(document.getElementById("graphFile"), (gd) => {
+          graphData = gd;
+          readFile(document.getElementById("infoFile"), (si) => {
+            serverInfo = si;
+            readFile(document.getElementById("targetsFile"), (ht) => {
+              hackTargets = ht;
+              renderGraph();
+            });
+          });
+        });
+      };
+
+      function renderGraph() {
+        const tooltip = document.getElementById("tooltip");
+        const nodes = [];
+        const edges = [];
+
+        const moneyValues = Object.values(serverInfo).map(
+          (s) => s.maxMoney || 0
+        );
+        const minMoney = Math.min(...moneyValues);
+        const maxMoney = Math.max(...moneyValues);
+        const normalize = (m) => {
+          const val = (m - minMoney) / (maxMoney - minMoney);
+          return 10 + val * 40;
+        };
+
+        const added = new Set();
+        for (const [server, neighbors] of Object.entries(graphData)) {
+          if (!added.has(server)) {
+            const info = serverInfo[server] || {};
+            nodes.push({
+              data: {
+                id: server,
+                label: server,
+                root: info.root,
+                maxMoney: info.maxMoney,
+                ram: info.ram,
+                hackLevel: info.hackLevel,
+              },
+            });
+            added.add(server);
+          }
+
+          for (const neighbor of neighbors) {
+            const edgeId = [server, neighbor].sort().join("_");
+            if (!edges.some((e) => e.data.id === edgeId)) {
+              edges.push({
+                data: { id: edgeId, source: server, target: neighbor },
+              });
+            }
+          }
+        }
+
+        const cy = cytoscape({
+          container: document.getElementById("cy"),
+          elements: [...nodes, ...edges],
+          style: [
+            {
+              selector: "node",
+              style: {
+                label: "data(label)",
+                "text-valign": "top",
+                "text-halign": "center",
+                "text-margin-y": "-10px",
+                color: "#c9d1d9",
+                "text-outline-color": "#0d1117",
+                "text-outline-width": 2,
+                "font-size": "10px",
+                "background-color": (ele) =>
+                  ele.data("root") ? "#26a641" : "#d73a49",
+                width: (ele) => normalize(ele.data("maxMoney") || 0),
+                height: (ele) => normalize(ele.data("maxMoney") || 0),
+                "border-width": 1,
+                "border-color": "#444",
+              },
+            },
+            {
+              selector: "edge",
+              style: {
+                "line-color": "#444",
+                width: 1,
+              },
+            },
+            {
+              selector: ":selected",
+              style: {
+                "background-color": "#FFD700",
+                "line-color": "#FFD700",
+              },
+            },
+          ],
+          layout: { name: "cose", animate: true },
+        });
+
+        cy.on("mouseover", "node", (evt) => {
+          const d = evt.target.data();
+          tooltip.innerHTML = `
+          <strong>${d.label}</strong><br/>
+          Rooted: ${d.root}<br/>
+          Hack Level: ${d.hackLevel}<br/>
+          RAM: ${d.ram} GB<br/>
+          Max Money: $${(d.maxMoney || 0).toLocaleString()}
+        `;
+          tooltip.style.display = "block";
+        });
+
+        cy.on("mouseout", "node", () => {
+          tooltip.style.display = "none";
+        });
+
+        cy.on("mousemove", (evt) => {
+          if (evt.renderedPosition) {
+            tooltip.style.left = evt.renderedPosition.x + 15 + "px";
+            tooltip.style.top = evt.renderedPosition.y + 15 + "px";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

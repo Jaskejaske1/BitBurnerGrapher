@@ -61,9 +61,9 @@
   </head>
   <body>
     <div id="controls">
-      <label><input type="checkbox" id="filterRooted" checked />Rooted</label>
+      <label><input type="checkbox" id="filterRooted" />Rooted</label>
       <label
-        ><input type="checkbox" id="filterProfit" checked />Profitable</label
+        ><input type="checkbox" id="filterProfit" />Profitable</label
       >
       <label><input type="checkbox" id="filterPserv" />Personal Servers</label>
       <label
@@ -236,8 +236,8 @@
             document.getElementById(id).addEventListener("input", applyFilters)
         );
         document.getElementById("resetBtn").addEventListener("click", () => {
-          document.getElementById("filterRooted").checked = true;
-          document.getElementById("filterProfit").checked = true;
+          document.getElementById("filterRooted").checked = false;
+          document.getElementById("filterProfit").checked = false;
           document.getElementById("filterPserv").checked = false;
           document.getElementById("searchInput").value = "";
           applyFilters();

@@ -6,46 +6,180 @@
     "joesguns",
     "hong-fang-tea",
     "harakiri-sushi",
-    "iron-gym",
-    "darkweb",
-    "pserv-0",
-    "pserv-1",
-    "pserv-2",
-    "pserv-3",
-    "pserv-4",
-    "pserv-5",
-    "pserv-6",
-    "pserv-7",
-    "pserv-8",
-    "pserv-9",
-    "pserv-10",
-    "pserv-11",
-    "pserv-12",
-    "pserv-13",
-    "pserv-14",
-    "pserv-15",
-    "pserv-16",
-    "pserv-17",
-    "pserv-18",
-    "pserv-19",
-    "pserv-20",
-    "pserv-21",
-    "pserv-22",
-    "pserv-23",
-    "pserv-24"
+    "iron-gym"
   ],
   "n00dles": [
+    "home"
+  ],
+  "foodnstuff": [
+    "home",
+    "zer0",
+    "nectar-net"
+  ],
+  "zer0": [
+    "foodnstuff"
+  ],
+  "nectar-net": [
+    "foodnstuff",
+    "neo-net",
+    "silver-helix"
+  ],
+  "neo-net": [
+    "nectar-net",
+    "netlink",
+    "crush-fitness"
+  ],
+  "netlink": [
+    "neo-net"
+  ],
+  "crush-fitness": [
+    "neo-net",
+    "catalyst"
+  ],
+  "catalyst": [
+    "crush-fitness",
+    "rho-construction"
+  ],
+  "rho-construction": [
+    "catalyst"
+  ],
+  "silver-helix": [
+    "nectar-net",
+    "the-hub",
+    "johnson-ortho"
+  ],
+  "the-hub": [
+    "silver-helix",
+    "rothman-uni",
+    "zb-institute",
+    "summit-uni"
+  ],
+  "rothman-uni": [
+    "the-hub",
+    "millenium-fitness"
+  ],
+  "millenium-fitness": [
+    "rothman-uni",
+    "galactic-cyber",
+    "global-pharm"
+  ],
+  "galactic-cyber": [
+    "millenium-fitness"
+  ],
+  "global-pharm": [
+    "millenium-fitness",
+    "omnia",
+    "deltaone"
+  ],
+  "omnia": [
+    "global-pharm",
+    "solaris"
+  ],
+  "solaris": [
+    "omnia",
+    "zb-def"
+  ],
+  "zb-def": [
+    "solaris",
+    "microdyne"
+  ],
+  "microdyne": [
+    "zb-def"
+  ],
+  "deltaone": [
+    "global-pharm",
+    "defcomm",
+    "icarus",
+    "zeus-med"
+  ],
+  "defcomm": [
+    "deltaone"
+  ],
+  "icarus": [
+    "deltaone",
+    "infocomm"
+  ],
+  "infocomm": [
+    "icarus",
+    "run4theh111z"
+  ],
+  "run4theh111z": [
+    "infocomm",
+    "stormtech",
+    "helios",
+    "vitalife"
+  ],
+  "stormtech": [
+    "run4theh111z"
+  ],
+  "helios": [
+    "run4theh111z",
+    "."
+  ],
+  ".": [
+    "helios",
+    "blade"
+  ],
+  "blade": [
+    "."
+  ],
+  "vitalife": [
+    "run4theh111z",
+    "omnitek"
+  ],
+  "omnitek": [
+    "vitalife",
+    "b-and-a",
+    "nwo"
+  ],
+  "b-and-a": [
+    "omnitek",
+    "megacorp"
+  ],
+  "megacorp": [
+    "b-and-a"
+  ],
+  "nwo": [
+    "omnitek",
+    "The-Cave"
+  ],
+  "The-Cave": [
+    "nwo"
+  ],
+  "zeus-med": [
+    "deltaone",
+    "nova-med"
+  ],
+  "nova-med": [
+    "zeus-med",
+    "applied-energetics"
+  ],
+  "applied-energetics": [
+    "nova-med"
+  ],
+  "zb-institute": [
+    "the-hub"
+  ],
+  "summit-uni": [
+    "the-hub",
+    "alpha-ent"
+  ],
+  "alpha-ent": [
+    "summit-uni"
+  ],
+  "johnson-ortho": [
+    "silver-helix"
+  ],
+  "sigma-cosmetics": [
     "home",
     "CSEC"
   ],
   "CSEC": [
-    "n00dles"
+    "sigma-cosmetics",
+    "omega-net"
   ],
-  "foodnstuff": [
-    "home"
-  ],
-  "sigma-cosmetics": [
-    "home"
+  "omega-net": [
+    "CSEC"
   ],
   "joesguns": [
     "home",
@@ -53,332 +187,94 @@
   ],
   "max-hardware": [
     "joesguns",
-    "silver-helix"
-  ],
-  "silver-helix": [
-    "max-hardware",
-    "the-hub",
-    "johnson-ortho",
-    "avmnite-02h"
-  ],
-  "the-hub": [
-    "silver-helix",
-    "zb-institute"
-  ],
-  "zb-institute": [
-    "the-hub"
-  ],
-  "johnson-ortho": [
-    "silver-helix",
-    "rothman-uni",
-    "catalyst"
-  ],
-  "rothman-uni": [
-    "johnson-ortho",
-    "lexo-corp"
-  ],
-  "lexo-corp": [
-    "rothman-uni",
-    "global-pharm"
-  ],
-  "global-pharm": [
-    "lexo-corp",
-    "deltaone",
-    "unitalife"
-  ],
-  "deltaone": [
-    "global-pharm",
-    "defcomm",
-    "icarus",
-    "univ-energy",
-    "solaris",
-    "zeus-med"
-  ],
-  "defcomm": [
-    "deltaone",
-    "taiyang-digital",
-    "nova-med"
-  ],
-  "taiyang-digital": [
-    "defcomm",
-    "run4theh111z"
-  ],
-  "run4theh111z": [
-    "taiyang-digital"
-  ],
-  "nova-med": [
-    "defcomm"
-  ],
-  "icarus": [
-    "deltaone",
-    "infocomm"
-  ],
-  "infocomm": [
-    "icarus"
-  ],
-  "univ-energy": [
-    "deltaone"
-  ],
-  "solaris": [
-    "deltaone",
-    "zb-def"
-  ],
-  "zb-def": [
-    "solaris",
-    "titan-labs",
-    "microdyne",
-    "applied-energetics"
-  ],
-  "titan-labs": [
-    "zb-def"
-  ],
-  "microdyne": [
-    "zb-def",
-    "fulcrumtech",
-    "stormtech",
-    "vitalife"
-  ],
-  "fulcrumtech": [
-    "microdyne"
-  ],
-  "stormtech": [
-    "microdyne"
-  ],
-  "vitalife": [
-    "microdyne",
-    "."
-  ],
-  ".": [
-    "vitalife"
-  ],
-  "applied-energetics": [
-    "zb-def",
-    "helios"
-  ],
-  "helios": [
-    "applied-energetics",
-    "omnitek",
-    "4sigma",
-    "kuai-gong"
-  ],
-  "omnitek": [
-    "helios",
-    "blade",
-    "nwo",
-    "clarkinc"
-  ],
-  "blade": [
-    "omnitek"
-  ],
-  "nwo": [
-    "omnitek"
-  ],
-  "clarkinc": [
-    "omnitek",
-    "ecorp",
-    "fulcrumassets"
-  ],
-  "ecorp": [
-    "clarkinc"
-  ],
-  "fulcrumassets": [
-    "clarkinc"
-  ],
-  "4sigma": [
-    "helios",
-    "b-and-a"
-  ],
-  "b-and-a": [
-    "4sigma",
-    "megacorp",
-    "The-Cave"
-  ],
-  "megacorp": [
-    "b-and-a"
-  ],
-  "The-Cave": [
-    "b-and-a"
-  ],
-  "kuai-gong": [
-    "helios",
-    "powerhouse-fitness"
-  ],
-  "powerhouse-fitness": [
-    "kuai-gong"
-  ],
-  "zeus-med": [
-    "deltaone"
-  ],
-  "unitalife": [
-    "global-pharm"
-  ],
-  "catalyst": [
-    "johnson-ortho",
-    "alpha-ent",
-    "aevum-police"
-  ],
-  "alpha-ent": [
-    "catalyst"
-  ],
-  "aevum-police": [
-    "catalyst",
-    "aerocorp"
-  ],
-  "aerocorp": [
-    "aevum-police"
-  ],
-  "avmnite-02h": [
-    "silver-helix",
-    "summit-uni",
-    "syscore"
-  ],
-  "summit-uni": [
-    "avmnite-02h",
-    "rho-construction",
-    "millenium-fitness"
-  ],
-  "rho-construction": [
-    "summit-uni"
-  ],
-  "millenium-fitness": [
-    "summit-uni",
-    "galactic-cyber",
-    "snap-fitness"
-  ],
-  "galactic-cyber": [
-    "millenium-fitness"
-  ],
-  "snap-fitness": [
-    "millenium-fitness",
-    "omnia"
-  ],
-  "omnia": [
-    "snap-fitness"
-  ],
-  "syscore": [
-    "avmnite-02h"
-  ],
-  "hong-fang-tea": [
-    "home",
-    "zer0"
-  ],
-  "zer0": [
-    "hong-fang-tea",
-    "neo-net"
-  ],
-  "neo-net": [
-    "zer0",
-    "netlink"
-  ],
-  "netlink": [
-    "neo-net"
-  ],
-  "harakiri-sushi": [
-    "home",
-    "nectar-net"
-  ],
-  "nectar-net": [
-    "harakiri-sushi",
-    "phantasy",
-    "omega-net"
+    "phantasy"
   ],
   "phantasy": [
-    "nectar-net",
-    "crush-fitness"
+    "max-hardware",
+    "computek",
+    "avmnite-02h"
   ],
-  "crush-fitness": [
+  "computek": [
     "phantasy",
     "I.I.I.I"
   ],
   "I.I.I.I": [
-    "crush-fitness"
+    "computek",
+    "aevum-police"
   ],
-  "omega-net": [
-    "nectar-net",
-    "computek"
+  "aevum-police": [
+    "I.I.I.I"
   ],
-  "computek": [
-    "omega-net"
+  "avmnite-02h": [
+    "phantasy",
+    "syscore"
+  ],
+  "syscore": [
+    "avmnite-02h",
+    "lexo-corp"
+  ],
+  "lexo-corp": [
+    "syscore",
+    "aerocorp",
+    "snap-fitness"
+  ],
+  "aerocorp": [
+    "lexo-corp",
+    "unitalife"
+  ],
+  "unitalife": [
+    "aerocorp",
+    "univ-energy"
+  ],
+  "univ-energy": [
+    "unitalife",
+    "taiyang-digital"
+  ],
+  "taiyang-digital": [
+    "univ-energy",
+    "titan-labs"
+  ],
+  "titan-labs": [
+    "taiyang-digital",
+    "fulcrumtech"
+  ],
+  "fulcrumtech": [
+    "titan-labs",
+    "4sigma",
+    "kuai-gong"
+  ],
+  "4sigma": [
+    "fulcrumtech",
+    "powerhouse-fitness"
+  ],
+  "powerhouse-fitness": [
+    "4sigma",
+    "fulcrumassets"
+  ],
+  "fulcrumassets": [
+    "powerhouse-fitness"
+  ],
+  "kuai-gong": [
+    "fulcrumtech",
+    "clarkinc"
+  ],
+  "clarkinc": [
+    "kuai-gong",
+    "ecorp"
+  ],
+  "ecorp": [
+    "clarkinc"
+  ],
+  "snap-fitness": [
+    "lexo-corp"
+  ],
+  "hong-fang-tea": [
+    "home"
+  ],
+  "harakiri-sushi": [
+    "home"
   ],
   "iron-gym": [
-    "home"
-  ],
-  "darkweb": [
-    "home"
-  ],
-  "pserv-0": [
-    "home"
-  ],
-  "pserv-1": [
-    "home"
-  ],
-  "pserv-2": [
-    "home"
-  ],
-  "pserv-3": [
-    "home"
-  ],
-  "pserv-4": [
-    "home"
-  ],
-  "pserv-5": [
-    "home"
-  ],
-  "pserv-6": [
-    "home"
-  ],
-  "pserv-7": [
-    "home"
-  ],
-  "pserv-8": [
-    "home"
-  ],
-  "pserv-9": [
-    "home"
-  ],
-  "pserv-10": [
-    "home"
-  ],
-  "pserv-11": [
-    "home"
-  ],
-  "pserv-12": [
-    "home"
-  ],
-  "pserv-13": [
-    "home"
-  ],
-  "pserv-14": [
-    "home"
-  ],
-  "pserv-15": [
-    "home"
-  ],
-  "pserv-16": [
-    "home"
-  ],
-  "pserv-17": [
-    "home"
-  ],
-  "pserv-18": [
-    "home"
-  ],
-  "pserv-19": [
-    "home"
-  ],
-  "pserv-20": [
-    "home"
-  ],
-  "pserv-21": [
-    "home"
-  ],
-  "pserv-22": [
-    "home"
-  ],
-  "pserv-23": [
-    "home"
-  ],
-  "pserv-24": [
     "home"
   ]
 }
